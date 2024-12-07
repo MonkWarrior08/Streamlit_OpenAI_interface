@@ -30,33 +30,38 @@ custom_system_prompt = st.sidebar.text_area("Custom System Prompt", "")
 st.session_state["custom_system_prompt"] = custom_system_prompt
 
 
-# Add a file uploader in the sidebar
-uploaded_file = st.sidebar.file_uploader("Upload a document", type=["txt", "pdf"])
+# Modify the file uploader to accept multiple files
+uploaded_files = st.sidebar.file_uploader("Upload documents", type=["txt", "pdf"], accept_multiple_files=True)
 
-# Process the uploaded file
-if uploaded_file is not None:
-    file_content = ""
+# Process each uploaded file
+file_contents = []
+if uploaded_files:
+    for uploaded_file in uploaded_files:
+        file_content = ""
 
-    if uploaded_file.type == "application/pdf":
-        # Read PDF file
-        pdf_reader = PdfReader(uploaded_file)
-        for page in pdf_reader.pages:
-            file_content += page.extract_text()
-    else:
-        # Read and decode text file
-        try:
-            file_content = uploaded_file.read().decode("utf-8")
-        except UnicodeDecodeError:
-            st.error("The uploaded file could not be decoded.")
-            file_content = ""
+        if uploaded_file.type == "application/pdf":
+            # Read PDF file
+            pdf_reader = PdfReader(uploaded_file)
+            for page in pdf_reader.pages:
+                file_content += page.extract_text()
+        else:
+            # Read and decode text file
+            try:
+                file_content = uploaded_file.read().decode("utf-8")
+            except UnicodeDecodeError:
+                st.error(f"The uploaded file {uploaded_file.name} could not be decoded.")
+                file_content = ""
 
-    # Truncate the file content if it's too long
-    max_length = 16000 
-    if len(file_content) > max_length:
-        file_content = file_content[:max_length]
+        # Truncate the file content if it's too long
+        max_length = 16000 
+        if len(file_content) > max_length:
+            file_content = file_content[:max_length]
 
-    # Store the file content in session state for AI use
-    st.session_state["file_content"] = file_content
+        # Append the file content to the list
+        file_contents.append(file_content)
+
+    # Store all file contents in session state for AI use
+    st.session_state["file_contents"] = file_contents
 
 
 for message in st.session_state.messages:
@@ -69,13 +74,14 @@ if prompt := st.chat_input("What's on your mind Dimitri?"):
         st.markdown(prompt)
 
     with st.chat_message("assistant"):
-        # Include the file content and custom system prompt in the messages if available
+        # Include the file contents and custom system prompt in the messages if available
         messages = [
             {"role": m["role"], "content": m["content"]}
             for m in st.session_state.messages
         ]
-        if "file_content" in st.session_state and st.session_state["file_content"]:
-            messages.append({"role": "system", "content": st.session_state["file_content"]})
+        if "file_contents" in st.session_state and st.session_state["file_contents"]:
+            for content in st.session_state["file_contents"]:
+                messages.append({"role": "system", "content": content})
         
         # Add the custom system prompt to the messages
         if st.session_state["custom_system_prompt"]:
@@ -93,3 +99,5 @@ if prompt := st.chat_input("What's on your mind Dimitri?"):
 # Add a button to clear messages in the sidebar
 if st.sidebar.button("Clear Chat"):
     st.session_state.messages = []
+    st.session_state["file_contents"] = []  # Clear file contents
+    st.session_state["custom_system_prompt"] = ""  # Clear custom system prompt
