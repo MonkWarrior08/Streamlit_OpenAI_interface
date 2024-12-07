@@ -5,7 +5,7 @@ from PyPDF2 import PdfReader
 
 # Add a sidebar for LangChain
 st.sidebar.title("Dimi's OpenAI")
-st.sidebar.write("[Monkwarrior](https://github.com/MonkWarrior08)")
+st.sidebar.write("By [Monkwarrior08](https://github.com/MonkWarrior08)")
 # Add a dropdown for model selection
 model_options = ["gpt-4o", "gpt-4o-mini", "o1-mini", "o1-preview"]
 selected_model = st.sidebar.selectbox("OpenAI model", model_options)
@@ -88,3 +88,8 @@ if prompt := st.chat_input("What's on your mind Dimitri?"):
         )
         response = st.write_stream(stream)
     st.session_state.messages.append({"role": "assistant", "content": response})
+
+
+# Add a button to clear messages in the sidebar
+if st.sidebar.button("Clear Chat"):
+    st.session_state.messages = []
