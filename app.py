@@ -3,11 +3,9 @@ import streamlit as st
 from PyPDF2 import PdfReader
 
 
-
 # Add a sidebar for LangChain
-st.sidebar.title("OpenAI Chat")
-
-
+st.sidebar.title("Dimi's OpenAI")
+st.sidebar.write("[Monkwarrior](https://github.com/MonkWarrior08)")
 # Add a dropdown for model selection
 model_options = ["gpt-4o", "gpt-4o-mini", "o1-mini", "o1-preview"]
 selected_model = st.sidebar.selectbox("OpenAI model", model_options)
@@ -65,7 +63,7 @@ for message in st.session_state.messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
-if prompt := st.chat_input("Anything in mind?"):
+if prompt := st.chat_input("What's on your mind Dimitri?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     with st.chat_message("user"):
         st.markdown(prompt)
