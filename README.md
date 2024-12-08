@@ -47,7 +47,7 @@ PyPDF2>=3.0.0
 ```
 
 ### 4. Configure OpenAI API Key
-Create `.streamlit/secrets.toml` and add:
+Open `.streamlit/secrets.toml` and add:
 ```toml
 OPENAI_API_KEY = "your-api-key-here"
 ```
