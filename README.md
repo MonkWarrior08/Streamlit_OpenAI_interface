@@ -1,5 +1,5 @@
 # OpenAI-Chat-interface
-### Link: https://openaichatinterface.streamlit.app/
+### Web Link: https://openaichatinterface.streamlit.app/
 
 <img width="1787" alt="Screenshot 2024-12-08 at 6 30 28 PM" src="https://github.com/user-attachments/assets/22e16bac-607d-49e3-a060-34587a106a9c">
 
