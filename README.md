@@ -20,10 +20,45 @@ git clone https://github.com/MonkWarrior08/OpenAI_Chat_interface.git
 cd OpenAI_Chat_interface
 ```
 
-2. Install required dependencies:
+2. Creating a Virtual Environment
+
+### For Windows:
+```bash
+# Navigate to your project directory
+cd dimis-openai
+
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+venv\Scripts\activate
+```
+
+### For macOS/Linux:
+```bash
+# Navigate to your project directory
+cd dimis-openai
+
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate the virtual environment
+source venv/bin/activate
+```
+
+3. Install required dependencies:
+Once your virtual environment is activated, install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
+
+### Requirements
+```txt
+openai>=1.0.0
+streamlit>=1.24.0
+PyPDF2>=3.0.0
+```
+
 
 3. Set up your OpenAI API key in Streamlit's secrets:
 Go to and open .streamlit/secrets.toml` file and insert your API key:
