@@ -6,11 +6,17 @@ from PyPDF2 import PdfReader
 # Add a sidebar for LangChain
 st.sidebar.title("Dimi's OpenAI")
 st.sidebar.write("By [Monkwarrior08](https://github.com/MonkWarrior08)")
+# Add a text input for the API key in the sidebar
+api_key = st.sidebar.text_input("Enter your OpenAI API Key", type="password")
+
+
 # Add a dropdown for model selection
 model_options = ["gpt-4o", "gpt-4o-mini", "o1-mini", "o1-preview"]
 selected_model = st.sidebar.selectbox("OpenAI model", model_options)
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+
+# Initialize the OpenAI client with the user-provided API key
+client = OpenAI(api_key=api_key)
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = selected_model
