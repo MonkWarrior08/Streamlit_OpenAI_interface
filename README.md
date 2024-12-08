@@ -1,4 +1,5 @@
 # OpenAI-Chat-interface
+<img width="1402" alt="Screenshot 2024-12-08 at 5 38 38 PM" src="https://github.com/user-attachments/assets/74ab00bf-3616-4820-8e37-697920ef93a3">
 
 A Streamlit-based web application that provides an interactive chat interface powered by OpenAI's language models. This application allows users to have conversations with AI models while also incorporating document analysis capabilities.
 
