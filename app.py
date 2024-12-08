@@ -98,8 +98,18 @@ if prompt := st.chat_input("What's on your mind Dimitri?"):
             messages=messages,
             stream=True
         )
-        response = st.write_stream(stream)
-    st.session_state.messages.append({"role": "assistant", "content": response})
+        
+        # Collect the response from the stream
+        response_content = ""
+        for chunk in stream:
+            # Access the delta attribute to get the text
+            content = chunk.choices[0].delta.content
+            if content:  # Check if content is not None
+                response_content += content
+        
+        st.markdown(response_content)  # Use st.markdown or st.write to display the response
+
+    st.session_state.messages.append({"role": "assistant", "content": response_content})
 
 
 # Add a button to clear messages in the sidebar
