@@ -46,11 +46,6 @@ streamlit>=1.24.0
 PyPDF2>=3.0.0
 ```
 
-### 4. Configure OpenAI API Key
-Open `.streamlit/secrets.toml` and add:
-```toml
-OPENAI_API_KEY = "your-api-key-here"
-```
 
 ## 💻 Usage
 
@@ -64,6 +59,7 @@ Open your browser and navigate to:
 - Local URL: `http://localhost:8501`
 
 ### Available Features
+- 🔑 API Key Input: Enter your OpenAI API Key
 - 🔄 Model Selection: Choose from different OpenAI models
 - 📁 Document Upload: Support for PDF and TXT files
 - ⚙️ System Prompts: Customize AI behavior
