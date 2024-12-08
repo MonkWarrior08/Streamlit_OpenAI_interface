@@ -14,15 +14,15 @@ A Streamlit-based web application that provides an interactive chat interface po
 
 ## Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
 ```bash
 git clone https://github.com/MonkWarrior08/OpenAI_Chat_interface.git
 cd OpenAI_Chat_interface
 ```
 
-2. Creating a Virtual Environment
+2. **Creating a Virtual Environment**
 
-### For Windows:
+For Windows:
 ```bash
 # Navigate to your project directory
 cd dimis-openai
@@ -34,7 +34,7 @@ python -m venv venv
 venv\Scripts\activate
 ```
 
-### For macOS/Linux:
+For macOS/Linux:
 ```bash
 # Navigate to your project directory
 cd dimis-openai
@@ -46,13 +46,13 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-3. Install required dependencies:
+3. **Install required dependencies:**
 Once your virtual environment is activated, install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Requirements
+Requirements:
 ```txt
 openai>=1.0.0
 streamlit>=1.24.0
@@ -60,7 +60,7 @@ PyPDF2>=3.0.0
 ```
 
 
-3. Set up your OpenAI API key in Streamlit's secrets:
+4. **Set up your OpenAI API key in Streamlit's secrets:**
 Go to and open .streamlit/secrets.toml` file and insert your API key:
 ```toml
 OPENAI_API_KEY = "your-api-key-here"
@@ -68,14 +68,15 @@ OPENAI_API_KEY = "your-api-key-here"
 
 ## Usage
 
-1. Run the Streamlit application:
+1. **Run the Streamlit application:**
 ```bash
 streamlit run app.py
 ```
 
-2. Access the application through your web browser (typically at `http://localhost:8501`)
+2. **Access the application**
+   - `http://localhost:8501`)
 
-3. Features available in the interface:
+3. **Features available in the interface:**
    - Select different OpenAI models from the dropdown
    - Upload PDF or TXT files for analysis
    - Enter custom system prompts
