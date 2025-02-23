@@ -1,4 +1,4 @@
-# OpenAI-Chat-interface
+# Streamlit_OpenAI_interface
 ### Web Link: https://openaichatinterface.streamlit.app/
 
 <img width="1787" alt="Screenshot 2024-12-08 at 6 30 28 PM" src="https://github.com/user-attachments/assets/22e16bac-607d-49e3-a060-34587a106a9c">
@@ -18,7 +18,7 @@ A Streamlit-based web application that provides an interactive chat interface po
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/MonkWarrior08/OpenAI_Chat_interface.git
+git clone https://github.com/MonkWarrior08/Streamlit_OpenAI_interface.git
 cd OpenAI_Chat_interface
 ```
 
